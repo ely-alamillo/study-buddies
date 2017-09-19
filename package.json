@@ -1,7 +1,7 @@
 {
   "name": "study-buddies",
   "version": "1.0.0",
-  "description": "",
+  "description": "simple study group app",
   "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/ely-alamillo/study-buddies#readme",
   "dependencies": {
+    "bcrypt": "^1.0.3",
     "body-parser": "^1.18.1",
     "cors": "^2.8.4",
     "express": "^4.15.4",
