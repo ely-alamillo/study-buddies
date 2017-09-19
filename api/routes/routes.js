@@ -17,8 +17,14 @@ const routes = (server) => {
   const taskRoutes = express.Router();
   taskRoutes.route('/user')
     .get(groupController.getUser);
+  taskRoutes.route('/groups')
+    .get(groupController.showAllGroups);
   taskRoutes.route('/addgroup')
     .post(groupController.verifyUser, groupController.addGroup);
+  taskRoutes.route('/mygroups')
+    .get(groupController.verifyUser, groupController.showUserGroups);
+  taskRoutes.route('/remove/:id')
+    .get(groupController.verifyUser, groupController.deleteUserGroup);
 
 
   server.use('/user', userRoutes);

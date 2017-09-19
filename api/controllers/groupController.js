@@ -27,7 +27,6 @@ const verifyUser = (req, res, next) => {
       sendUserError('token not valid', res);
       return;
     }
-    console.log(decodedToken);
     req.body.username = decodedToken.user.username;
     next();
   });
@@ -60,8 +59,40 @@ const addGroup = (req, res) => {
   });
 };
 
+const showUserGroups = (req, res) => {
+  const { username } = req.body;
+  User.findOne({ username }, (err, user) => {
+    if (err) return sendUserError(err, res);
+    if (!user) return sendUserError('invalid credentials', res);
+    res.json(user.studyGroups);
+  });
+};
+
+const deleteUserGroup = (req, res) => {
+  const { id } = req.params;
+  const { username } = req.body;
+  Group.remove({ _id: id }, (err, group) => {
+    if (err) return sendUserError(err, res);
+    if (group.result.n === 0) return sendUserError('could not remove group', res);
+    User.update({ username }, { $pull: { studyGroups: { _id: id }}}, (err, user) => {
+      if (err) return sendUserError(err, res);
+      if (!user) return sendUserError('invalid credentials', res);
+      res.json({group, user});
+    });
+  });
+};
+
+const showAllGroups = (req, res) => {
+  Group.find({}, (err, groups) => {
+    res.json(groups);
+  });
+};
+
 module.exports = {
   verifyUser,
   addGroup,
   getUser,
+  showUserGroups,
+  showAllGroups,
+  deleteUserGroup,
 };
