@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+const uniqueValidator = require('mongoose-unique-validator');
 
 const GroupSchema = new mongoose.Schema({
   groupName: { type: String, required: true},
@@ -14,8 +15,11 @@ const UserSchema = new mongoose.Schema({
   studyGroups: [GroupSchema],
 });
 
+UserSchema.plugin(uniqueValidator);
 const Group = mongoose.model('Group', GroupSchema);
 const User = mongoose.model('User', UserSchema);
+
+
 
 module.exports = {
   Group,
