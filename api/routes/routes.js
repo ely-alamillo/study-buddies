@@ -18,7 +18,7 @@ const routes = (server) => {
   taskRoutes.route('/user')
     .get(groupController.getUser);
   taskRoutes.route('/groups')
-    .get(groupController.showAllGroups);
+    .get(groupController.verifyUser, groupController.showAllGroups);
   taskRoutes.route('/addgroup')
     .post(groupController.verifyUser, groupController.addGroup);
   taskRoutes.route('/mygroups')

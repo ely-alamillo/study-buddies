@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { register } from '../actions';
+import { login } from '../actions';
 
 import { FormControl, FormGroup } from 'react-bootstrap';
 
 
-class Register extends Component {
+class Login extends Component {
   constructor(props) {
     super(props)
     this.state = {
@@ -15,7 +15,7 @@ class Register extends Component {
     }
     this.handleUsername = this.handleUsername.bind(this);
     this.handlePassword = this.handlePassword.bind(this);
-    this.handleRegister = this.handleRegister.bind(this);
+    this.handleLogin = this.handleLogin.bind(this);
   };
 
   handleUsername(event) {
@@ -26,9 +26,9 @@ class Register extends Component {
     this.setState({ password: event.target.value });
   };
 
-  handleRegister(event) {
+  handleLogin(event) {
     event.preventDefault();
-    this.props.register(this.state.username, this.state.password, this.props.history)
+    this.props.login(this.state.username, this.state.password, this.props.history)
     console.log('history: ', this.props.history);
     this.setState({ username: '', password: ''});
   };
@@ -36,7 +36,7 @@ class Register extends Component {
   render() {
     return (
       <div className='container'>
-        <form className='login-form' onSubmit={this.handleRegister}>
+        <form className='login-form' onSubmit={this.handleLogin}>
         <FormGroup>
           username
           <FormControl
@@ -63,13 +63,14 @@ class Register extends Component {
 };
 
 const mapStateToProps = (state) => {
+  // console.log(state.user.token);
   return { user: state.user };
 };
 
 const mapDispatchToProps = (dispatch) => {
   return bindActionCreators({
-    register,
+    login,
   }, dispatch);
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(Register);
+export default connect(mapStateToProps, mapDispatchToProps)(Login);
