@@ -25,6 +25,8 @@ const routes = (server) => {
     .get(groupController.verifyUser, groupController.showUserGroups);
   taskRoutes.route('/remove/:id')
     .get(groupController.verifyUser, groupController.deleteUserGroup);
+  taskRoutes.route('/:id')
+    .get(groupController.verifyUser, groupController.getSingleGroup);
 
 
   server.use('/user', userRoutes);

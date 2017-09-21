@@ -88,6 +88,14 @@ const showAllGroups = (req, res) => {
   });
 };
 
+const getSingleGroup = (req, res) => {
+  const { id } = req.params;
+  Group.findById(id, (err, group) => {
+    if (err) return sendUserError(err, res);
+    res.json(group);
+  });
+};
+
 module.exports = {
   verifyUser,
   addGroup,
@@ -95,4 +103,5 @@ module.exports = {
   showUserGroups,
   showAllGroups,
   deleteUserGroup,
+  getSingleGroup,
 };
