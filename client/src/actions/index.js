@@ -63,9 +63,10 @@ export const getGroups = (token) => {
   };
 };
 
-export const addGroup = (group) => {
+export const addGroup = (group, token) => {
   axios.default.withCredentials = true;
   return (dispatch) => {
+    axios.defaults.headers.common['x-access-token'] = token;
     axios.post('http://localhost:3030/group/addgroup', group)
       .then((data) => {
         dispatch({
@@ -82,8 +83,22 @@ export const addGroup = (group) => {
   };
 };
 
-// export const getToken = () => {
-//   token = window.localStorage.getItem('token');
-//   if (!token || token === '') return
-//   return token;
-// };
+export const getSingleGroup = (id, token) => {
+  axios.default.withCredentials = true;
+  return(dispatch) => {
+    axios.defaults.headers.common['x-access-token'] = token;
+    axios.get(`http://localhost:3030/group/${id}`)
+      .then((data) => {
+        dispatch({
+          type: 'SINGLE_GROUP',
+          payload: data,
+        });
+      })
+      .catch((err) => {
+        dispatch({
+          type: 'SINGLE_GROUP_ERROR',
+          payload: err,
+        });
+      });
+  };
+};
