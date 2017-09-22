@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
 import { getGroups, addGroup } from '../actions';
 import { FormControl, FormGroup } from 'react-bootstrap';
 
@@ -44,7 +45,8 @@ class Feed extends Component {
       instructor: this.state.instructor,
       time: this.state.time
     }
-    this.props.addGroup(group);
+    const token = window.localStorage.getItem('token')
+    this.props.addGroup(group, token);
   }
 
   componentDidMount() {
@@ -97,7 +99,7 @@ class Feed extends Component {
                 onChange={this.handleTime}
               />
             </FormGroup>
-            <button className='btn btn-success' type='submit'> Login </button>
+            <button className='btn btn-success' type='submit'> Ad Group </button>
           </form>
           </div>
         </div>
@@ -105,7 +107,7 @@ class Feed extends Component {
 
         <ul>
           {this.props.groups.map((group, i) => {
-            return <li key={i}>{group.groupName}</li>;
+            return <li key={i}> <Link to={`/feed/${group._id}`}>{group.groupName} </Link> </li>;
           })}
         </ul>
       </div>
