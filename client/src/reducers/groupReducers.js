@@ -9,6 +9,9 @@ const groupReducers = (groups = [], action) => {
       return action.payload.data.studyGroups
     case 'ADD_GROUP_ERROR':
       return { err: 'could not create group'};
+    case 'SINGLE_GROUP':
+      console.log(action.payload);
+      return action.payload.data;
     default:
       return groups;
   }
