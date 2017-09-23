@@ -20,7 +20,7 @@ class SingleGroup extends Component {
         <div className='panel panel-default'>
           <div className='panel-heading'>{this.props.groupDetails.createdBy}</div>
           <div className='panel-body'>
-            <h1>Group Name</h1>
+            <h1>{this.props.groupDetails.groupName}</h1>
             <p>
               Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed
               do eiusmod tempor incididunt ut labore et dolore magna aliqua.
@@ -33,14 +33,10 @@ class SingleGroup extends Component {
             </p>
           </div>
           <div className="panel-footer">
-            <strong>time:</strong> 8:00p &nbsp;
-            <strong>Location:</strong> Heldenfelds
+            <strong>time:</strong> {this.props.groupDetails.time} &nbsp;
+            <strong>Location:</strong> {this.props.groupDetails.location}
           </div>
       </div>
-        {/* <h1>{this.props.groupDetails.groupName}</h1>
-        <h1>{this.props.groupDetails.subject}</h1>
-        <h1>{this.props.groupDetails.instructor}</h1>
-        <h1>{this.props.groupDetails.time}</h1> */}
       </div>
     );
   };
