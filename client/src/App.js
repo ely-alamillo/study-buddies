@@ -4,6 +4,7 @@ import Feed from './pages/Feed';
 import Login from './pages/Login';
 import SingleGroup from './pages/SingleGroup';
 import Navigation from './pages/Navigation'
+import MyGroups from './pages/MyGroups'
 
 import { Route } from 'react-router-dom';
 import './App.css';
@@ -20,6 +21,7 @@ class App extends Component {
         <Route path='/feed' exact component={Feed} />
         <Route path='/login' component={Login} />
         <Route path='/feed/:id'  component={SingleGroup} />
+        <Route path='/mygroups'  component={MyGroups} />
       </div>
     );
   }
