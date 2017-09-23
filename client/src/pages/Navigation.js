@@ -28,6 +28,9 @@ class Navigation extends Component {
           <LinkContainer to={'/feed'}>
             <NavItem eventKey={1}>Groups Feed</NavItem>
           </LinkContainer>
+          <LinkContainer to={'/mygroups'}>
+            <NavItem eventKey={1}>My Groups</NavItem>
+          </LinkContainer>
           <LinkContainer to={'/login'}>
             <NavItem eventKey={1}>Signin</NavItem>
           </LinkContainer>
