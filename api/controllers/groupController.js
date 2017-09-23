@@ -41,19 +41,21 @@ const getUser = (req, res) => {
 const addGroup = (req, res) => {
   const { username } = req.body;
   const createdBy = username;
-  const { groupName, time, subject, instructor } = req.body;
+  const { groupName, time, subject, instructor, location } = req.body;
   if (!username) return sendUserError('invalid credentials', res);
-  if (!groupName || !time, !subject || !instructor) return sendUserError('plese provide all information', res);
+  if (!groupName || !time, !subject || !instructor || !location) return sendUserError('plese provide all information', res);
   User.findOne({ username }, (err, user) => {
     if (err) return sendUserError(err, res);
     if (!user) return sendUserError('invalid credentils');
-    const newGroup = new Group({ groupName, time, subject, instructor, createdBy });
+    const newGroup = new Group({ groupName, time, location, subject, instructor, createdBy });
     newGroup.save((err) => {
       if (err) return sendUserError(err, res);
       user.studyGroups.push(newGroup);
       user.save((err) => {
         if (err) return sendUserError(err, res);
-        res.json(user);
+        Group.find({}, (err, groups) => {
+          res.json({ groups, user});
+        });
       });
     });
   });
@@ -77,7 +79,7 @@ const deleteUserGroup = (req, res) => {
     User.update({ username }, { $pull: { studyGroups: { _id: id }}}, (err, user) => {
       if (err) return sendUserError(err, res);
       if (!user) return sendUserError('invalid credentials', res);
-      res.json({group, user});
+      showUserGroups(req,res);
     });
   });
 };
