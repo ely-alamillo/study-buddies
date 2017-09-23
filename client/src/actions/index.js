@@ -85,7 +85,7 @@ export const addGroup = (group, token) => {
 
 export const getSingleGroup = (id, token) => {
   axios.default.withCredentials = true;
-  return(dispatch) => {
+  return (dispatch) => {
     axios.defaults.headers.common['x-access-token'] = token;
     axios.get(`http://localhost:3030/group/${id}`)
       .then((data) => {
@@ -97,6 +97,45 @@ export const getSingleGroup = (id, token) => {
       .catch((err) => {
         dispatch({
           type: 'SINGLE_GROUP_ERROR',
+          payload: err,
+        });
+      });
+  };
+};
+
+export const myGroups = (token) => {
+  axios.default.withCredentials = true;
+  return (dispatch) => {
+    axios.defaults.headers.common['x-access-token'] = token;
+    axios.get('http://localhost:3030/group/mygroups')
+      .then((data) => {
+        dispatch({
+          type: 'USER_GROUPS',
+          payload: data,
+        });
+      })
+      .catch((err) => {
+        dispatch({
+          type: 'USER_GROUPS_ERROR',
+          payload: err,
+        });
+      });
+  };
+};
+
+export const deleteGroup = (token, id) => {
+  axios.default.withCredentials = true;
+  return (dispatch) => {
+    axios.get(`http://localhost:3030/group/remove/${id}`)
+      .then((data) => {
+        dispatch({
+          type: 'DELETE_GROUP',
+          payload: data,
+        });
+      })
+      .catch((err) => {
+        dispatch({
+          type: 'SELETE_GROUP_ERROR',
           payload: err,
         });
       });
