@@ -4,6 +4,7 @@ const uniqueValidator = require('mongoose-unique-validator');
 const GroupSchema = new mongoose.Schema({
   groupName: { type: String, required: true},
   time: { type: Number, required: true},
+  location: { type: String, required: true },
   subject: { type: String, required: true},
   instructor: { type: String},
   createdBy: {type: String },
