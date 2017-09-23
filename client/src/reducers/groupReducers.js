@@ -5,12 +5,16 @@ const groupReducers = (groups = [], action) => {
     case 'SHOW_GROUPS_ERROR':
       return { err: 'could get groups'};
     case 'ADD_GROUP':
-    console.log('add group: ', action.payload.data.studyGroups);
-      return action.payload.data.studyGroups
+      console.log(action.payload.data);
+      return action.payload.data.groups;
     case 'ADD_GROUP_ERROR':
       return { err: 'could not create group'};
     case 'SINGLE_GROUP':
-      console.log(action.payload);
+      return action.payload.data;
+    case 'USER_GROUPS':
+      return action.payload.data;
+    case 'DELETE_GROUP':
+    console.log(action.payload.data);
       return action.payload.data;
     default:
       return groups;
