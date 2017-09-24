@@ -2,7 +2,9 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 import { getGroups, addGroup } from "../actions";
-import { FormControl, FormGroup } from "react-bootstrap";
+import { FormControl, FormGroup, Form, Col, ControlLabel,
+Modal, Button, ButtonToolbar } from "react-bootstrap";
+
 
 class Feed extends Component {
   constructor(props) {
@@ -15,13 +17,18 @@ class Feed extends Component {
       instructor: '',
       time: '',
     };
+    this.getInitialState = this.getInitialState.bind(this);
     this.handleGroupName = this.handleGroupName.bind(this);
     this.handleLocation = this.handleLocation.bind(this);
     this.handleSubject = this.handleSubject.bind(this);
     this.handleInstructor = this.handleInstructor.bind(this);
     this.handleTime = this.handleTime.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleLink = this.handleLink.bind(this);
   }
+  getInitialState() {
+    return { smShow: false, lgShow: false };
+  };
 
   handleGroupName(event) {
     this.setState({ groupName: event.target.value });
@@ -29,7 +36,6 @@ class Feed extends Component {
 
   handleLocation(event) {
     this.setState({ location: event.target.value})
-    console.log(this.state.location);
   }
 
   handleSubject(event) {
@@ -42,6 +48,11 @@ class Feed extends Component {
 
   handleTime(event) {
     this.setState({ time: event.target.value });
+  }
+
+  handleLink(event) {
+    // console.log(event);
+    // this.history.push()
   }
 
   handleSubmit(event) {
@@ -82,59 +93,73 @@ class Feed extends Component {
       <div>
         <div>
           <div className="container">
-            <form className="addgroup-form" onSubmit={this.handleSubmit}>
-              <FormGroup>
-                group name
-                <FormControl
-                  type="text"
-                  placeholder="group name"
-                  value={this.state.groupName}
-                  onChange={this.handleGroupName}
-                />
+            <Form horizontal onSubmit={this.handleSubmit}>
+              <FormGroup className='text-right'>
+                <Col sm={2} > <ControlLabel>Group Name</ControlLabel></Col>
+                <Col sm={10}>
+                  <FormControl
+                    type="text"
+                    placeholder="group name"
+                    value={this.state.groupName}
+                    onChange={this.handleGroupName}
+                  />
+                </Col>
               </FormGroup>
 
-              <FormGroup>
-                location
-                <FormControl
-                  type="text"
-                  placeholder="location"
-                  value={this.state.location}
-                  onChange={this.handleLocation}
-                />
+              <FormGroup className='text-right'>
+                <Col sm={2}><ControlLabel>Location</ControlLabel></Col>
+                <Col sm={10}>
+                  <FormControl
+                    type="text"
+                    placeholder="location"
+                    value={this.state.location}
+                    onChange={this.handleLocation}
+                  />
+                </Col>
               </FormGroup>
 
-              <FormGroup>
-                subject
-                <FormControl
-                  type="text"
-                  placeholder="subject"
-                  value={this.state.subject}
-                  onChange={this.handleSubject}
-                />
+              <FormGroup className='text-right'>
+                <Col sm={2}><ControlLabel>Subject</ControlLabel></Col>
+                <Col sm={10}>
+                  <FormControl
+                    type="text"
+                    placeholder="subject"
+                    value={this.state.subject}
+                    onChange={this.handleSubject}
+                  />
+                </Col>
               </FormGroup>
 
-              <FormGroup>
-                instructor
-                <FormControl
-                  type="text"
-                  placeholder="instructor"
-                  value={this.state.instructor}
-                  onChange={this.handleInstructor}
-                />
+              <FormGroup className='text-right'>
+                <Col sm={2}><ControlLabel>Instructor</ControlLabel></Col>
+                <Col sm={10}>
+                  <FormControl
+                    type="text"
+                    placeholder="instructor"
+                    value={this.state.instructor}
+                    onChange={this.handleInstructor}
+                  />
+                </Col>
               </FormGroup>
-              <FormGroup>
-                time
-                <FormControl
-                  type="text"
-                  placeholder="time"
-                  value={this.state.time}
-                  onChange={this.handleTime}
-                />
+              <FormGroup className='text-right'>
+                <Col sm={2}><ControlLabel>Time</ControlLabel></Col>
+                <Col sm={10}>
+                  <FormControl
+                    type="text"
+                    placeholder="time"
+                    value={this.state.time}
+                    onChange={this.handleTime}
+                  />
+                </Col>
               </FormGroup>
-              <button className="btn btn-success" type="submit">
-                Add Group
-              </button>
-            </form>
+              <FormGroup className='text-right'>
+                <Col sm={12} className='text-right'>
+                  <button className="btn btn-success" type="submit" >
+                    Add Group
+                  </button>
+                </Col>
+              </FormGroup>
+            </Form>
           </div>
         </div>
 
@@ -146,7 +171,8 @@ class Feed extends Component {
 
                 <div className='panel-body'>
                   <h1>
-                    <Link to={`/feed/${group._id}`}>{group.groupName}</Link>
+                    {/* <Link to={`/feed/${group._id}`} onClick={this.handleLink}>{group.groupName}</Link> */}
+                    <Link to={`#`} onClick={this.handleLink}>{group.groupName}</Link>
                   </h1>
                   <p>
                     Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed
