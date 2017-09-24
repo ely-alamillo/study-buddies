@@ -1,9 +1,11 @@
 import axios from 'axios';
 
+const url = 'http://45.55.227.76:3030'
+
 export const register = (username, password, history) => {
   axios.defaults.withCredentials = true;
   return (dispatch) => {
-    axios.post('http://localhost:3030/user/register', {username, password})
+    axios.post(`${url}/user/register`, {username, password})
       .then((data) => {
         dispatch({
           type: 'REGISTERED_USER',
@@ -23,7 +25,7 @@ export const register = (username, password, history) => {
 export const login = (username, password, history) => {
   axios.defaults.withCredentials = true;
   return (dispatch) => {
-    axios.post('http://localhost:3030/user/login', {username, password})
+    axios.post(`${url}/user/login`, {username, password})
       .then((data) => {
         dispatch({
           type: 'SIGNIN_USER',
