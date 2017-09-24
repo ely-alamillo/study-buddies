@@ -3,7 +3,9 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { register } from '../actions';
 
-import { FormControl, FormGroup } from 'react-bootstrap';
+import { FormControl, FormGroup, ControlLabel } from 'react-bootstrap';
+
+import './Register.css';
 
 
 class Register extends Component {
@@ -35,28 +37,32 @@ class Register extends Component {
 
   render() {
     return (
-      <div className='container'>
-        <form className='login-form' onSubmit={this.handleRegister}>
-        <FormGroup>
-          username
-          <FormControl
-            type='text'
-            placeholder='username'
-            value={this.state.username}
-            onChange={this.handleUsername}
-          />
-        </FormGroup>
-        <FormGroup>
-          password
-          <FormControl
-            type='text'
-            placeholder='password'
-            value={this.state.password}
-            onChange={this.handlePassword}
-          />
-          <button className='btn btn-success' type='submit'> Login </button>
-        </FormGroup>
-      </form>
+      <div className='container auth-form'>
+        <div className='jumbotron login-container'>
+          <form onSubmit={this.handleRegister}>
+            <FormGroup>
+              <ControlLabel>Username</ControlLabel>
+              <FormControl
+                type='text'
+                placeholder='username'
+                value={this.state.username}
+                onChange={this.handleUsername}
+                className='input-format'
+              />
+            </FormGroup>
+            <FormGroup>
+              <ControlLabel>Password</ControlLabel>
+              <FormControl
+                type='text'
+                placeholder='password'
+                value={this.state.password}
+                onChange={this.handlePassword}
+                className='input-format'
+              />
+              <button className='btn btn-success' type='submit'> Register </button>
+            </FormGroup>
+          </form>
+        </div>
       </div>
     )
   }
