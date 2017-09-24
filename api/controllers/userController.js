@@ -34,7 +34,7 @@ const register = (req, res) => {
     const user = new User({ username, password });
     user.save((saveErr) => {
       if (saveErr) return sendUserError(saveErr, res);
-      const token = jwt.sign({ user }, 'secret', { expiresIn: '20h' });
+      const token = jwt.sign({ user }, 'secret', { expiresIn: '1d' });
       res.json({ token });
     });
   });
