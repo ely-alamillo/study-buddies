@@ -17,13 +17,17 @@ class MyGroups extends Component {
     this.handleDelete = this.handleDelete.bind(this);
   };
 
+  componentWillMount() {
+    const token = window.localStorage.getItem('token')
+    this.props.myGroups(token);
+  };
   componentDidMount() {
     const token = window.localStorage.getItem('token')
     this.props.myGroups(token);
   };
 
   handleDelete(event) {
-    // event.preventDefault();
+    event.preventDefault();
     const token = window.localStorage.getItem('token')
     const id = event.target.value
     this.props.deleteGroup(token, id);
