@@ -1,0 +1,14 @@
+.auth-form {
+  text-align: left;
+}
+.input-format {
+  margin-bottom: 1em;
+}
+
+.login-container {
+  background: rgba(200, 200, 200, 0.7);
+}
+
+.redirect {
+  text-align: center;
+}
