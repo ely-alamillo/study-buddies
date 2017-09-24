@@ -43,7 +43,6 @@ class SingleGroup extends Component {
 };
 
 const mapStateToProps = (state) => {
-  console.log(state);
   return {
     groupDetails: state.groups,
   };
