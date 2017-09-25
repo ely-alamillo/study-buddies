@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
+import { Link } from 'react-router-dom';
 import { register } from '../actions';
 
-import { FormControl, FormGroup, ControlLabel } from 'react-bootstrap';
+import { FormControl, FormGroup, ControlLabel, Row, Col } from 'react-bootstrap';
 
 import './Register.css';
 
@@ -37,31 +38,51 @@ class Register extends Component {
 
   render() {
     return (
-      <div className='container auth-form'>
-        <div className='jumbotron login-container'>
-          <form onSubmit={this.handleRegister}>
-            <FormGroup>
-              <ControlLabel>Username</ControlLabel>
-              <FormControl
-                type='text'
-                placeholder='username'
-                value={this.state.username}
-                onChange={this.handleUsername}
-                className='input-format'
-              />
-            </FormGroup>
-            <FormGroup>
-              <ControlLabel>Password</ControlLabel>
-              <FormControl
-                type='text'
-                placeholder='password'
-                value={this.state.password}
-                onChange={this.handlePassword}
-                className='input-format'
-              />
-              <button className='btn btn-success' type='submit'> Register </button>
-            </FormGroup>
-          </form>
+      <div className='auth-form-register'>
+        <div className='container-fluid container-auth-register'>
+          <Row>
+            <Col md={7}>
+              <div className='jumbotron desc-register'>
+                <h1 className='main-quote'>Introducing StudyBuddies!</h1>
+                <br />
+                <h2 className='quote'>
+                  Giving you the control to build study groups around campus <br />
+                  at the touch of a button.
+                </h2>
+              </div>
+            </Col>
+            <Col md={4}>
+              <div className='jumbotron login-container-register'>
+                <form onSubmit={this.handleRegister}>
+                  <FormGroup>
+                    <ControlLabel>Username</ControlLabel>
+                    <FormControl
+                      type='text'
+                      placeholder='username'
+                      value={this.state.username}
+                      onChange={this.handleUsername}
+                      className='input-format-register'
+                    />
+                  </FormGroup>
+                  <FormGroup>
+                    <ControlLabel>Password</ControlLabel>
+                    <FormControl
+                      type='text'
+                      placeholder='password'
+                      value={this.state.password}
+                      onChange={this.handlePassword}
+                      className='input-format-register'
+                    />
+                    <button className='btn btn-success' type='submit'> Register </button>
+                    <h4 className='text-center'>
+                      If you already have an acount you can
+                      <Link to='/login'> Sign In</Link> here.
+                    </h4>
+                  </FormGroup>
+                </form>
+              </div>
+            </Col>
+          </Row>
         </div>
       </div>
     )

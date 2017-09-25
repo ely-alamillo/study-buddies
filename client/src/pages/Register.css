@@ -1,14 +1,36 @@
-.auth-form {
+.auth-form-register {
   text-align: left;
+  background: url('../study-group.jpg') no-repeat center center;
+  background-size: cover;
+  flex: 1;
 }
-.input-format {
+.container-auth-register {
+  padding-top: 2em;
+  margin-top: 10em;
+}
+.desc-register {
+  color: #FFFFFF;
+  background: rgba(200, 200, 200, 0.7);
+  background: transparent;
+}
+.main-quote {
+  background-color:#000000;
+  display:inline;
+  line-height: 2em;
+}
+.quote {
+  background-color: #000000;
+  display: inline;
+  line-height: 2em;
+}
+.input-format-register {
   margin-bottom: 1em;
 }
 
-.login-container {
+.login-container-register {
   background: rgba(200, 200, 200, 0.7);
 }
 
-.redirect {
+.redirect-register {
   text-align: center;
 }
