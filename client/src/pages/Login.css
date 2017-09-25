@@ -1,0 +1,21 @@
+.auth-form {
+  text-align: left;
+  background: url('../study-group.jpg') no-repeat center center;
+  background-size: cover;
+  flex: 1;
+}
+.container-auth {
+  padding-top: 2em;
+  margin-top: 10em;
+}
+.input-format {
+  margin-bottom: 1em;
+}
+
+.login-container {
+  background: rgba(200, 200, 200, 0.7);
+}
+
+.redirect {
+  text-align: center;
+}
