@@ -26,6 +26,10 @@ app.use(morgan('dev'));
 const { routes } = require('./api/routes/routes');
 routes(app);
 
-app.listen(3030, '0.0.0.0', () => {
+app.get('/api', (req, res) => {
+  res.json({ message: 'hello ely i am working'});
+});
+
+app.listen(process.env.PORT || 3030, '0.0.0.0', () => {
   console.log('server running on port 3030');
 });
