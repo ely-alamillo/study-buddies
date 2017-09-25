@@ -1,0 +1,12 @@
+.navbar {
+  border-radius: 0px;
+  margin-bottom: 0px;
+}
+
+.navbar-custom {
+  background-color: rgba(0, 0, 0, .38);
+  border-color: transparent;
+  position: fixed;
+  width: 100%;
+  color: yellow;
+}
