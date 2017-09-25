@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const url = 'http://45.55.227.76:3030'
+const url = 'https://frozen-tor-41729.herokuapp.com'
 
 export const register = (username, password, history) => {
   axios.defaults.withCredentials = true;
@@ -49,7 +49,7 @@ export const getGroups = (token) => {
   axios.defaults.withCredentials = true;
   return (dispatch) => {
     axios.defaults.headers.common['x-access-token'] = token;
-    axios.get('http://localhost:3030/group/groups')
+    axios.get(`${url}/group/groups`)
       .then((data) => {
         dispatch({
           type: 'SHOW_GROUPS',
@@ -69,7 +69,7 @@ export const addGroup = (group, token) => {
   axios.default.withCredentials = true;
   return (dispatch) => {
     axios.defaults.headers.common['x-access-token'] = token;
-    axios.post('http://localhost:3030/group/addgroup', group)
+    axios.post(`${url}/group/addgroup`, group)
       .then((data) => {
         dispatch({
           type: 'ADD_GROUP',
@@ -89,7 +89,7 @@ export const getSingleGroup = (id, token) => {
   axios.default.withCredentials = true;
   return (dispatch) => {
     axios.defaults.headers.common['x-access-token'] = token;
-    axios.get(`http://localhost:3030/group/${id}`)
+    axios.get(`${url}/group/${id}`)
       .then((data) => {
         dispatch({
           type: 'SINGLE_GROUP',
@@ -109,7 +109,7 @@ export const myGroups = (token) => {
   axios.default.withCredentials = true;
   return (dispatch) => {
     axios.defaults.headers.common['x-access-token'] = token;
-    axios.get('http://localhost:3030/group/mygroups')
+    axios.get(`${url}/group/mygroups`)
       .then((data) => {
         dispatch({
           type: 'USER_GROUPS',
@@ -128,7 +128,7 @@ export const myGroups = (token) => {
 export const deleteGroup = (token, id) => {
   axios.default.withCredentials = true;
   return (dispatch) => {
-    axios.get(`http://localhost:3030/group/remove/${id}`)
+    axios.get(`${url}/group/remove/${id}`)
       .then((data) => {
         dispatch({
           type: 'DELETE_GROUP',
