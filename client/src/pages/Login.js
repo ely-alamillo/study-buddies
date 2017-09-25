@@ -1,9 +1,12 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
+import { Link } from 'react-router-dom'
 import { login } from '../actions';
 
-import { FormControl, FormGroup, ControlLabel } from 'react-bootstrap';
+import { FormControl, FormGroup, ControlLabel, Row, Col } from 'react-bootstrap';
+
+import './Login.css';
 
 
 class Login extends Component {
@@ -35,31 +38,47 @@ class Login extends Component {
 
   render() {
     return (
-      <div className='container auth-form'>
-        <div className='jumbotron login-container'>
-          <form onSubmit={this.handleRegister}>
-            <FormGroup>
-              <ControlLabel>Username</ControlLabel>
-              <FormControl
-                type='text'
-                placeholder='username'
-                value={this.state.username}
-                onChange={this.handleUsername}
-                className='input-format'
-              />
-            </FormGroup>
-            <FormGroup>
-              <ControlLabel>Password</ControlLabel>
-              <FormControl
-                type='text'
-                placeholder='password'
-                value={this.state.password}
-                onChange={this.handlePassword}
-                className='input-format'
-              />
-              <button className='btn btn-success' type='submit'> Register </button>
-            </FormGroup>
-          </form>
+      <div className='auth-form'>
+        <div className='container-fluid container-auth'>
+          <Row>
+            {/* <Col md={6}>
+              <div className='jumbotron'>
+                <h1>hello</h1>
+              </div>
+            </Col> */}
+            <Col md={6} mdOffset={3}>
+              <div className='jumbotron login-container-register'>
+                <form onSubmit={this.handleLogin}>
+                  <FormGroup>
+                    <ControlLabel>Username</ControlLabel>
+                    <FormControl
+                      type='text'
+                      placeholder='username'
+                      value={this.state.username}
+                      onChange={this.handleUsername}
+                      className='input-format-register'
+                    />
+                  </FormGroup>
+                  <FormGroup>
+                    <ControlLabel>Password</ControlLabel>
+                    <FormControl
+                      type='text'
+                      placeholder='password'
+                      value={this.state.password}
+                      onChange={this.handlePassword}
+                      className='input-format-register'
+                    />
+                    <button className='btn btn-success' type='submit'> Login </button>
+                    <br />
+                    <h4 className='text-center'>
+                      If you don't have an acount you can
+                      <Link to='/'> Register</Link> here.
+                    </h4>
+                  </FormGroup>
+                </form>
+              </div>
+            </Col>
+          </Row>
         </div>
       </div>
     )
