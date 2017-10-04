@@ -32,7 +32,6 @@ class Login extends Component {
   handleLogin(event) {
     event.preventDefault();
     this.props.login(this.state.username, this.state.password, this.props.history)
-    console.log('history: ', this.props.history);
     this.setState({ username: '', password: ''});
   };
 

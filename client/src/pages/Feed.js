@@ -5,7 +5,9 @@ import { getGroups, addGroup } from "../actions";
 import { FormControl, FormGroup, Form, Col, ControlLabel,
 Modal, Button, ButtonToolbar } from "react-bootstrap";
 
-
+const padding = {
+  paddingTop: 80,
+}
 class Feed extends Component {
   constructor(props) {
     super(props);
@@ -82,16 +84,17 @@ class Feed extends Component {
     this.props.getGroups(token);
     // this.props.getGroups(token);
   }
-  // componentWillMount() {
-  //   const token = window.localStorage.getItem("token");
-  //   this.props.getGroups(token);
-  //   // this.props.getGroups(token);
-  // }
+  componentWillMount() {
+    const token = window.localStorage.getItem("token");
+    this.props.getGroups(token);
+    // this.props.getGroups(token);
+  }
+
 
   render() {
     return (
       <div>
-        <div>
+        <div style={padding}>
           <div className="container">
             <Form horizontal onSubmit={this.handleSubmit}>
               <FormGroup className='text-right'>
