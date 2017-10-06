@@ -2,8 +2,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 import { getGroups, addGroup } from "../actions";
-import { FormControl, FormGroup, Form, Col, ControlLabel,
-Modal, Button, ButtonToolbar } from "react-bootstrap";
+import { FormControl, FormGroup, Form, Col, ControlLabel} from "react-bootstrap";
 
 const padding = {
   paddingTop: 80,
