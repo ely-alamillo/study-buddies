@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { myGroups, deleteGroup } from '../actions';
-import { FormControl, FormGroup } from "react-bootstrap";
 
 const inlineBlock = {
   display: 'inline-block',
