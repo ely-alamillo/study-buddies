@@ -1,17 +1,17 @@
-const userReducers = (token = null, action) => {
+const userReducers = (auth = {}, action) => {
   switch (action.type) {
     case 'REGISTERED_USER':
-      token = action.payload.data.token;
-      return { token };
+      let token = action.payload.data.token;
+      return { token, authenticated: true };
     case 'REGISTER_ERROR':
       return { error: 'Username not available'};
     case 'SIGNIN_USER':
-      token = action.payload.data.token
-      return { token };
+      token = action.payload.data.token;
+      return { token, authenticated: true };
     case 'SIGNIN_ERROR':
       return {error: 'invalid credentials'};
     default:
-      return token;
+      return auth;
   }
 };
 

@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import { LinkContainer } from 'react-router-bootstrap';
 import { Nav, Navbar, NavItem, NavDropdown, MenuItem } from 'react-bootstrap';
 
@@ -31,19 +32,19 @@ class Navigation extends Component {
       <Navbar.Collapse>
         <Nav pullRight>
           <LinkContainer to={'/feed'}>
-            <NavItem eventKey={1}>Groups Feed</NavItem>
+            <NavItem>Groups Feed</NavItem>
           </LinkContainer>
 
           <LinkContainer to={'/mygroups'}>
-            <NavItem eventKey={1}>My Groups</NavItem>
+            <NavItem>My Groups</NavItem>
           </LinkContainer>
 
           <LinkContainer to={'/login'}>
-            <NavItem eventKey={1}>Log In</NavItem>
+            <NavItem>Log In</NavItem>
           </LinkContainer>
 
-          <LinkContainer to={'#'}>
-            <NavItem eventKey={2} onClick={this.handleLogout}>Logout</NavItem>
+          <LinkContainer to={'/'}>
+            <NavItem onClick={this.handleLogout}>Logout</NavItem>
           </LinkContainer>
 
           {/* { !this.token ?
@@ -63,4 +64,11 @@ class Navigation extends Component {
   };
 };
 
-export default Navigation;
+const mapStateToProps = (state) => {
+  return {
+    authenticated: state.user.authenticated,
+  }
+}
+
+export default connect(mapStateToProps)(Navigation);
+// export default Navigation;
